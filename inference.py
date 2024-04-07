@@ -30,12 +30,13 @@ from typing import Dict, FrozenSet, Iterator, List, Text, Tuple
 from absl import logging
 import numpy as np
 import pandas as pd
-import utils
 import six
 import tensorflow.compat.v1 as tf
 import tensorflow_hub as hub
 import tqdm
 import scipy.sparse
+
+from proteinfer import utils
 
 
 def call_module(module, one_hots, row_lengths, signature):

@@ -22,7 +22,7 @@ import urllib
 
 from absl import app
 from absl import flags
-import utils
+import proteinfer.utils
 import tensorflow.compat.v1 as tf
 import tqdm
 
@@ -47,7 +47,7 @@ def download_models(model_cache_path,
                               desc='Overall progress',
                               position=1,
                               leave=True):
-    utils.fetch_oss_pretrained_models(
+    proteinfer.utils.fetch_oss_pretrained_models(
         model_type,
         model_cache_path,
         num_ensemble_elements=num_ensemble_elements)
@@ -57,9 +57,9 @@ def download_models(model_cache_path,
 
 def get_description_file(model_cache_path):
   out_path = os.path.join(model_cache_path,
-                          utils.INSTALLED_LABEL_DESCRIPTION_FILE_NAME)
+                          proteinfer.utils.INSTALLED_LABEL_DESCRIPTION_FILE_NAME)
   with tf.io.gfile.GFile(out_path, 'wb') as out_file:
-    with urllib.request.urlopen(utils.LABEL_DESCRIPTION_URL) as url_contents:
+    with urllib.request.urlopen(proteinfer.utils.LABEL_DESCRIPTION_URL) as url_contents:
       out_file.write(url_contents.read())
 
 
@@ -74,7 +74,7 @@ def run(install_ensemble, model_cache_path):
                     'set.')
     download_models(
         model_cache_path,
-        num_ensemble_elements=utils.MAX_NUM_ENSEMBLE_ELS_FOR_INFERENCE)
+        num_ensemble_elements=proteinfer.utils.MAX_NUM_ENSEMBLE_ELS_FOR_INFERENCE)
   else:
     download_models(model_cache_path, num_ensemble_elements=1)
   get_description_file(model_cache_path)
