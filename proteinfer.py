@@ -34,8 +34,8 @@ from absl import flags
 from Bio.SeqIO import FastaIO
 import numpy as np
 import pandas as pd
-import inference
-import utils
+from proteinfer import inference
+from proteinfer import utils
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # TF c++ logging set to ERROR
 import tensorflow.compat.v1 as tf  # pylint: disable=g-import-not-at-top
 import tqdm

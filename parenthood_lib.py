@@ -30,9 +30,10 @@ from typing import (Collection, Dict, FrozenSet, Iterable, List, Optional, Set,
                     Text, Tuple)
 
 import pandas as pd
-import utils
 import tensorflow.compat.v1 as tf
 import tqdm
+
+from proteinfer import utils
 
 
 # From ftp://ftp.expasy.org/databases/enzyme/enzyme.dat
